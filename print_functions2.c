@@ -75,7 +75,7 @@ int print_non_printable(va_list types, char buffer[],
 	UNUSED(size);
 
 	if (str == NULL)
-		return (write(1, "(null)", 8));
+		return (write(1, "(null)", 6));
 
 	while (str[i] != '\0')
 	{
@@ -108,7 +108,7 @@ int print_reverse(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char *str;
-	int i, count = 1;
+	int i, count = 0;
 
 	UNUSED(buffer);
 	UNUSED(flags);
@@ -123,10 +123,10 @@ int print_reverse(va_list types, char buffer[],
 
 		str = ")Null(";
 	}
-	for (i = 1; str[i]; i++)
+	for (i = 0; str[i]; i++)
 		;
 
-	for (i = i - 2; i >= 1; i--)
+	for (i = i - 1; i >= 0; i--)
 	{
 		char z = str[i];
 
@@ -186,4 +186,5 @@ int print_rot13string(va_list types, char buffer[],
 	}
 	return (count);
 }
+
 
